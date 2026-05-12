@@ -5,7 +5,7 @@ import phoneGuard from '../assets/Phone_gard_image.png';
 
 const Products = () => {
   return (
-    <section id="products" className="py-24 relative bg-gray-50/50">
+    <section id="products" className="py-24 relative bg-white">
       {/* Subtle background grid lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px)', backgroundSize: '200px 100%' }}></div>
       
@@ -24,7 +24,7 @@ const Products = () => {
           {/* Raksham Web Row */}
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
             {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#eef4fb] to-[#e8f0fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
               {/* Subtle glow behind image */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[300px] h-[200px] bg-[#6366f1]/8 rounded-full blur-[60px]"></div>
@@ -70,13 +70,13 @@ const Products = () => {
             </div>
 
             
-            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#f0f0ff] to-[#e8f4fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
               {/* Subtle glow behind image */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
               </div>
-              <img 
-                src={phoneFirst} 
+              <img
+                src={phoneFirst}
                 alt="Raksham Staff App" 
                 className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.3)]"
               />
@@ -88,12 +88,12 @@ const Products = () => {
           {/* Guard App Row */}
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
             {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#f0f0ff] to-[#e8f0fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
               {/* Subtle glow behind image */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
               </div>
-              <img 
+              <img
                 src={phoneGuard} 
                 alt="Raksham Guard App" 
                 className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.25)]"

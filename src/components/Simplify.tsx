@@ -29,15 +29,17 @@ const Simplify = () => {
 
           {/* Illustration Area */}
           <div className="w-full md:w-1/2 relative flex justify-center items-center">
-            {/* Subtle glow behind image */}
+            {/* Glow behind card */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[300px] h-[300px] bg-[#6366f1]/15 rounded-full blur-[80px]"></div>
+              <div className="w-[340px] h-[340px] bg-[#6366f1]/20 rounded-full blur-[90px]"></div>
             </div>
-            <img 
-              src={simplifyImg} 
-              alt="Simplify Workforce Management" 
-              className="relative z-10 w-full max-w-[480px] h-auto object-contain drop-shadow-[0_20px_60px_rgba(99,102,241,0.3)]"
-            />
+            <div className="relative z-10 w-full max-w-[480px] bg-white/8 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
+              <img
+                src={simplifyImg}
+                alt="Simplify Workforce Management"
+                className="w-full h-auto object-contain block"
+              />
+            </div>
           </div>
           
         </div>
