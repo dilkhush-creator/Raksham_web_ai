@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Products from './components/Products';
+import ProductsPage from './components/ProductsPage';
 import Features from './components/Features';
 import Simplify from './components/Simplify';
 import Clients from './components/Clients';
@@ -31,9 +32,7 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* Add more routes here as needed, e.g.: */}
-          {/* <Route path="/about" element={<AboutPage />} /> */}
-          {/* <Route path="/pricing" element={<PricingPage />} /> */}
+          <Route path="/products" element={<ProductsPage />} />
         </Routes>
       </main>
       <Footer />

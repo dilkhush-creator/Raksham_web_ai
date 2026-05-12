@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer className="bg-[#f8fafc] pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          
+
           {/* Logo & Description Column */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-2 mb-6">
@@ -20,16 +20,16 @@ const Footer = () => {
               </div>
               <span className="text-3xl font-bold text-[#1a1a2e] tracking-tight">Raksham</span>
             </div>
-            
+
             <p className="text-gray-600 text-[15px] leading-relaxed mb-8">
               Simplifying workforce management with reliable tools for attendance, payroll, and employee records. Your business, effortlessly managed.
             </p>
-            
+
             <a href="#" className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#eef2ff] text-[#6366f1] hover:bg-[#6366f1] hover:text-white transition-colors">
               <span className="font-bold text-lg font-serif">in</span>
             </a>
           </div>
-          
+
           {/* Company Column */}
           <div className="md:col-span-2">
             <h3 className="font-bold text-[#1a1a2e] text-lg mb-6">Company</h3>
@@ -41,7 +41,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#6366f1]">Contact Us</a></li>
             </ul>
           </div>
-          
+
           {/* Products Column */}
           <div className="md:col-span-2">
             <h3 className="font-bold text-[#1a1a2e] text-lg mb-6">Products</h3>
@@ -51,34 +51,34 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#6366f1]">Guard App</a></li>
             </ul>
           </div>
-          
+
           {/* Contact Us Column */}
           <div className="md:col-span-4 text-[15px] text-gray-600">
             <h3 className="font-bold text-[#1a1a2e] text-lg mb-6">Contact Us</h3>
             <p className="font-bold text-[#1a1a2e] mb-2 text-sm">NammaRaksham AI Private Limited</p>
-            
+
             <p className="font-semibold text-gray-900 mt-4 mb-1 text-sm">Registered Office :</p>
             <p className="leading-relaxed text-sm">8 33/2/8 2nd Main Netaji Layout Vaderahalli, Yelahanka Vidhyaranyapura post 560097</p>
-            
+
             <p className="font-semibold text-gray-900 mt-4 mb-1 text-sm">Corporate office :</p>
             <p className="leading-relaxed mb-6 text-sm">Awfis Vista Pixel, 4th Floor, 8/2B and 8, 2nd C Main Rd, Jakkuru Layout, Jakkuru, Bengaluru, Karnataka 560092</p>
-            
+
             <p className="leading-relaxed mb-6 text-sm">
               Have questions or need assistance? Reach out to the Raksham team via phone or email. We're here to support your workforce management needs and help your business thrive.
             </p>
-            
+
             <p className="font-semibold text-gray-900">Call Us: +91-8660319788</p>
             <p className="font-semibold text-gray-900 mt-1.5">Mail Us: contact@raksham.ai</p>
           </div>
         </div>
-        
+
         {/* Bottom Section */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-[13px] text-gray-600 md:w-1/2">
             <p>Copyright © 2026 . all rights reserved by NammaRaksham AI Private Limited</p>
             <p className="mt-1">Developed & Managed By <a href="#" className="text-[#6366f1] hover:underline">Static Consultancy</a></p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <span className="font-bold text-[#1a1a2e] text-lg mr-2">Discover Our App</span>
             {/* Dummy Play Store Button */}
@@ -99,7 +99,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        
+
       </div>
     </footer>
   );
