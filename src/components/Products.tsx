@@ -1,4 +1,7 @@
 import { CheckSquare, ArrowRight, LayoutDashboard, CalendarDays } from 'lucide-react';
+import rakshamWebSec from '../assets/Raksham_web_sec.png';
+import phoneFirst from '../assets/Phone_first.png';
+import phoneGuard from '../assets/Phone_gard_image.png';
 
 const Products = () => {
   return (
@@ -21,30 +24,16 @@ const Products = () => {
           {/* Raksham Web Row */}
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
             {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-[#f0f7fb] rounded-3xl p-8 relative flex items-center justify-center min-h-[400px]">
-              {/* Dummy Laptop */}
-              <div className="relative w-full max-w-[400px] aspect-[16/10] bg-white rounded-t-xl border-[6px] border-black border-b-0 shadow-lg flex flex-col z-10">
-                <div className="bg-gray-100 h-4 flex items-center px-2 gap-1 border-b border-gray-200">
-                  <div className="w-2 h-2 rounded-full bg-red-400"></div>
-                  <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-                  <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                </div>
-                <div className="flex-1 bg-gray-50 flex items-center justify-center text-xs text-gray-400">
-                  [Web Dashboard Image]
-                </div>
+            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#eef4fb] to-[#e8f0fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+              {/* Subtle glow behind image */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-[300px] h-[200px] bg-[#6366f1]/8 rounded-full blur-[60px]"></div>
               </div>
-              {/* Laptop base */}
-              <div className="absolute top-[calc(50%+120px)] w-full max-w-[440px] h-3 bg-gray-300 rounded-b-lg shadow-xl z-10"></div>
-              
-              {/* Floating Tooltips */}
-              <div className="absolute top-1/4 right-[5%] bg-[#6a5cdb] text-white text-[10px] sm:text-xs px-3 py-2 rounded-md shadow-lg z-20 max-w-[150px]">
-                Real-time employee status
-                <div className="absolute -left-1.5 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#6a5cdb] rotate-45"></div>
-              </div>
-              <div className="absolute bottom-1/3 left-[5%] bg-[#6a5cdb] text-white text-[10px] sm:text-xs px-3 py-2 rounded-md shadow-lg z-20 max-w-[180px]">
-                Interactive multi-location geo-fencing
-                <div className="absolute -right-1.5 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#6a5cdb] rotate-45"></div>
-              </div>
+              <img 
+                src={rakshamWebSec} 
+                alt="Raksham Web Dashboard" 
+                className="relative z-10 w-full h-auto rounded-xl object-contain drop-shadow-[0_20px_40px_rgba(106,92,219,0.2)]"
+              />
             </div>
 
             {/* Text Side */}
@@ -53,9 +42,12 @@ const Products = () => {
                 <CheckSquare className="text-[#38bdf8]" size={32} />
               </div>
               <h3 className="text-3xl font-bold text-[#1a1a2e] mb-4">Raksham Web</h3>
-              <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                <strong className="text-gray-900">Raksham's</strong> Web allows organizations to monitor employee activity and track live progress, ensuring real-time insights into productivity and performance for better workforce management and operational efficiency.
+              <p className="text-gray-600 leading-relaxed text-lg mb-8">
+                <strong className="text-gray-900">Raksham's</strong> Web allows organizations to monitor employee activity and track live progress, ensuring real-time insights into productivity and performance for better workforce management and operational efficiency
               </p>
+              <a href="#" className="inline-flex items-center text-[#6366f1] font-semibold text-lg hover:underline decoration-2 underline-offset-4">
+                Explore Raksham Web <ArrowRight className="ml-2" size={20} />
+              </a>
             </div>
           </div>
 
@@ -77,25 +69,17 @@ const Products = () => {
               </a>
             </div>
 
-            {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-[#f8fafc] rounded-3xl p-8 relative flex items-center justify-center min-h-[400px]">
-              {/* Dummy Mobile */}
-              <div className="relative w-[200px] h-[400px] bg-white rounded-[2rem] border-[8px] border-black shadow-xl flex flex-col z-10 overflow-hidden">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-b-xl"></div>
-                <div className="flex-1 bg-gray-50 flex items-center justify-center text-xs text-gray-400 mt-5">
-                  [Staff App Image]
-                </div>
+            
+            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#f0f0ff] to-[#e8f4fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+              {/* Subtle glow behind image */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
               </div>
-
-              {/* Floating Tooltips */}
-              <div className="absolute bottom-1/4 left-[5%] bg-[#6a5cdb] text-white text-[10px] sm:text-xs px-4 py-3 rounded-lg shadow-lg z-20 max-w-[180px]">
-                Start your work shift by logging in effortlessly.
-                <div className="absolute -right-1.5 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#6a5cdb] rotate-45"></div>
-              </div>
-              <div className="absolute bottom-[10%] right-[5%] bg-[#6a5cdb] text-white text-[10px] sm:text-xs px-4 py-3 rounded-lg shadow-lg z-20 max-w-[200px]">
-                View and manage your shift schedule with real-time updates.
-                <div className="absolute -left-1.5 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#6a5cdb] rotate-45"></div>
-              </div>
+              <img 
+                src={phoneFirst} 
+                alt="Raksham Staff App" 
+                className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.3)]"
+              />
             </div>
           </div>
 
@@ -104,20 +88,16 @@ const Products = () => {
           {/* Guard App Row */}
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
             {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-[#f0fdf4] rounded-3xl p-8 relative flex items-center justify-center min-h-[400px]">
-              {/* Dummy Mobile */}
-              <div className="relative w-[200px] h-[400px] bg-white rounded-[2rem] border-[8px] border-black shadow-xl flex flex-col z-10 overflow-hidden">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-5 bg-black rounded-b-xl"></div>
-                <div className="flex-1 bg-gray-50 flex items-center justify-center text-xs text-gray-400 mt-5">
-                  [Guard App Image]
-                </div>
+            <div className="w-full md:w-1/2 bg-gradient-to-br from-[#f0f0ff] to-[#e8f0fd] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(99,102,241,0.08)]">
+              {/* Subtle glow behind image */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
               </div>
-
-              {/* Floating Tooltips */}
-              <div className="absolute bottom-1/4 right-[5%] bg-[#6a5cdb] text-white text-[10px] sm:text-xs px-4 py-3 rounded-lg shadow-lg z-20 max-w-[180px]">
-                Get randomize sleep alert.
-                <div className="absolute -left-1.5 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#6a5cdb] rotate-45"></div>
-              </div>
+              <img 
+                src={phoneGuard} 
+                alt="Raksham Guard App" 
+                className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.25)]"
+              />
             </div>
 
             {/* Text Side */}

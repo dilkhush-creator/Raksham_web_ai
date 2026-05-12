@@ -1,44 +1,48 @@
-import { MapPin, CheckSquare, IndianRupee } from 'lucide-react';
+import { BarChart3, Wallet, Download } from 'lucide-react';
 
 const Features = () => {
   return (
-    <section id="features" className="py-20">
+    <section id="features" className="py-24 bg-[#f8fafc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">Key Features</h2>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
-            Raksham’s key features streamline operations and boost workforce efficiency.
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-[44px] font-bold text-[#111827] mb-6">Key features</h2>
+          <p className="text-[17px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <strong className="text-gray-900">Raksham's</strong> key features—Activity Monitoring, Task Management, and<br className="hidden md:block" />
+            Geo-Tracking—streamline operations and boost workforce efficiency.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-10">
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-            <div className="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mb-6 shadow-sm">
-              <MapPin size={40} className="text-primary" />
+        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+          {/* Feature 1 */}
+          <div className="flex flex-col items-center text-center">
+            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
+              <BarChart3 size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-dark mb-3">Attendance Management</h3>
-            <p className="text-gray leading-relaxed">
-              Track employee attendance in real-time with geo-fencing, shift monitoring, and automated alerts for seamless management.
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Attendance Management</h3>
+            <p className="text-gray-600 leading-relaxed text-[15px]">
+              Track employee attendance in real-time<br className="hidden lg:block" />with geo-fencing, shift monitoring, and<br className="hidden lg:block" />automated alerts for seamless<br className="hidden lg:block" />management.
             </p>
           </div>
           
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-            <div className="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mb-6 shadow-sm">
-              <CheckSquare size={40} className="text-primary" />
+          {/* Feature 2 */}
+          <div className="flex flex-col items-center text-center">
+            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
+              <Wallet size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-dark mb-3">Task Management</h3>
-            <p className="text-gray leading-relaxed">
-              Assign, track, and monitor tasks in real-time, ensuring efficient completion and workforce accountability.
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Task Management</h3>
+            <p className="text-gray-600 leading-relaxed text-[15px]">
+              Assign, track, and monitor tasks in real-<br className="hidden lg:block" />time, ensuring efficient completion and<br className="hidden lg:block" />workforce accountability.
             </p>
           </div>
           
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-            <div className="w-20 h-20 bg-primary-light rounded-full flex items-center justify-center mb-6 shadow-sm">
-              <IndianRupee size={40} className="text-primary" />
+          {/* Feature 3 */}
+          <div className="flex flex-col items-center text-center">
+            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
+              <Download size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
             </div>
-            <h3 className="text-2xl font-bold text-dark mb-3">Payroll Management</h3>
-            <p className="text-gray leading-relaxed">
-              Automate payroll based on attendance and overtime, ensuring accurate, timely payments and compliance with labor laws.
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Payroll Management</h3>
+            <p className="text-gray-600 leading-relaxed text-[15px]">
+              Automate payroll based on attendance<br className="hidden lg:block" />and overtime, ensuring accurate, timely<br className="hidden lg:block" />payments and compliance with labor<br className="hidden lg:block" />laws.
             </p>
           </div>
         </div>

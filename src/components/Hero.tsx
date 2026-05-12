@@ -1,4 +1,5 @@
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import laptopFirst from '../assets/Laptop_first.png';
 
 const Hero = () => {
   return (
@@ -25,49 +26,15 @@ const Hero = () => {
             Book Free Demo <ArrowRight className="ml-2" size={20} />
           </button>
 
-          {/* Mockup Area */}
-          <div className="mt-24 w-full max-w-6xl mx-auto relative h-[400px] md:h-[600px]">
-            {/* Dummy Laptop */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-[90%] md:w-[800px] aspect-[16/10] bg-[#1a153a] rounded-t-2xl border-[12px] border-black border-b-0 shadow-2xl overflow-hidden flex flex-col">
-              {/* Dummy Browser Header */}
-              <div className="bg-[#2a244d] h-8 flex items-center px-4 gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="flex-1 ml-4 bg-white/10 rounded-md h-5"></div>
-              </div>
-              {/* Dummy App Content */}
-              <div className="flex-1 bg-white/5 flex items-center justify-center text-gray-500 font-medium">
-                [Laptop Dashboard Image Area]
-              </div>
-            </div>
-            {/* Laptop Base */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-[calc(100%-12px)] md:top-[calc(800px*10/16)] w-[95%] md:w-[900px] h-4 bg-gray-400 rounded-b-xl shadow-2xl"></div>
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-[calc(100%-12px+16px)] md:top-[calc(800px*10/16+16px)] w-[150px] h-1 bg-gray-500 rounded-b-lg"></div>
-
-            {/* Dummy Mobile Phone */}
-            <div className="hidden md:flex absolute bottom-12 right-[10%] w-[220px] h-[450px] bg-[#1a153a] rounded-[2.5rem] border-[10px] border-black shadow-2xl overflow-hidden flex-col">
-               {/* Mobile Notch */}
-               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl z-10"></div>
-               {/* Mobile App Content */}
-               <div className="flex-1 bg-white/5 flex items-center justify-center text-gray-500 font-medium text-center px-4">
-                 [Mobile App Image Area]
-               </div>
-            </div>
-
-            {/* Floating Label - Web */}
-            <div className="hidden md:flex absolute top-1/4 left-[5%] bg-[#5b4f96] text-white px-5 py-3 rounded-xl text-sm font-semibold shadow-2xl whitespace-nowrap transform -rotate-2">
-              Web Application by<br />Raksham
-              <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-[#5b4f96] rotate-45"></div>
-            </div>
-
-            {/* Floating Label - Mobile */}
-            <div className="hidden md:flex absolute bottom-1/4 right-[25%] bg-[#5b4f96] text-white px-5 py-3 rounded-xl text-sm font-semibold shadow-2xl whitespace-nowrap transform rotate-2 z-20">
-              Mobile Application by<br />Raksham
-              <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-[#5b4f96] rotate-45"></div>
-            </div>
+          {/* Laptop Image */}
+          <div className="mt-20 w-full max-w-5xl mx-auto relative">
+            {/* Glow effect behind image */}
+            <div className="absolute inset-0 bg-[#6366f1]/10 blur-[80px] rounded-full scale-90 -translate-y-8"></div>
+            <img 
+              src={laptopFirst} 
+              alt="Raksham Dashboard Preview" 
+              className="relative z-10 w-full rounded-2xl shadow-[0_20px_80px_rgba(99,102,241,0.25)] border border-white/10"
+            />
           </div>
         </div>
       </section>
