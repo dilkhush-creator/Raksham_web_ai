@@ -11,6 +11,7 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isProducts = location.pathname === '/products';
+  const isAbout = location.pathname === '/about';
 
   return (
     <nav className="fixed top-0 w-full bg-[#100b29] z-50 border-b border-white/5">
@@ -44,7 +45,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <a href="/#about" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">About</a>
+            <Link to="/about" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isAbout ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>About</Link>
             <a href="/#pricing" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Pricing</a>
             <a href="/#blogs" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Blogs</a>
             <a href="/#contact" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Contact</a>
@@ -88,7 +89,7 @@ const Navbar = () => {
               <Link to="/products#our-products" onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white py-2">Guard App</Link>
             </div>
           )}
-          <a href="/#about" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">About</a>
+          <Link to="/about" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isAbout ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>About</Link>
           <a href="/#pricing" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Pricing</a>
           <a href="/#blogs" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Blogs</a>
           <a href="/#contact" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Contact</a>

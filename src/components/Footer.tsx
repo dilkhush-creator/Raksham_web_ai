@@ -1,4 +1,5 @@
 import { Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -34,11 +35,11 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="font-bold text-[#1a1a2e] text-lg mb-6">Company</h3>
             <ul className="space-y-4 text-[15px] text-gray-600">
-              <li><a href="#" className="hover:text-[#6366f1]">Homepage</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">About Us</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">Pricing</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">Blog</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">Contact Us</a></li>
+              <li><Link to="/" className="hover:text-[#6366f1]">Homepage</Link></li>
+              <li><Link to="/about" className="hover:text-[#6366f1]">About Us</Link></li>
+              <li><a href="/#pricing" className="hover:text-[#6366f1]">Pricing</a></li>
+              <li><a href="/#blogs" className="hover:text-[#6366f1]">Blog</a></li>
+              <li><a href="/#contact" className="hover:text-[#6366f1]">Contact Us</a></li>
             </ul>
           </div>
 
@@ -46,9 +47,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="font-bold text-[#1a1a2e] text-lg mb-6">Products</h3>
             <ul className="space-y-4 text-[15px] text-gray-600">
-              <li><a href="#" className="hover:text-[#6366f1]">Raksham Web</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">Staff App</a></li>
-              <li><a href="#" className="hover:text-[#6366f1]">Guard App</a></li>
+              <li><Link to="/products" className="hover:text-[#6366f1]">Raksham Web</Link></li>
+              <li><Link to="/products" className="hover:text-[#6366f1]">Staff App</Link></li>
+              <li><Link to="/products" className="hover:text-[#6366f1]">Guard App</Link></li>
             </ul>
           </div>
 

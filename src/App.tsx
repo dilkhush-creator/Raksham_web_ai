@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Products from './components/Products';
 import ProductsPage from './components/ProductsPage';
+import AboutPage from './components/AboutPage';
 import Features from './components/Features';
 import Simplify from './components/Simplify';
 import Clients from './components/Clients';
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
       <Footer />
