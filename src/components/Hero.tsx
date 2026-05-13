@@ -17,7 +17,12 @@ const Hero = () => {
             Optimize Workforce, Accelerate<br />
             Business Growth With <span className="text-[#6366f1]">Raksham</span>
           </h1>
+
+           <h1 className="text-5xl md:text-[64px] font-bold text-white mb-6 tracking-tight max-w-5xl leading-[1.1]">
+            Create Your Own <span className="text-[#6366f1]"> COMMAND CENTER</span>
+          </h1>
           
+        
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-4xl font-light">
             Manage workforce and track attendance effortlessly with Raksham. Streamline employee visibility and simplify operations using our platform.
           </p>

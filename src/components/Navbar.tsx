@@ -1,5 +1,5 @@
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import rakshamLogo from '../assets/Raksham_logo.png';
 
@@ -8,13 +8,34 @@ const LOGIN_URL = 'https://app.raksham.in/auth/login';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      // Hide when scrolling down past 80px, show when scrolling up
+      if (y > lastScrollY.current && y > 80) {
+        setNavHidden(true);
+        setIsOpen(false); // close mobile menu on hide
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const isHome = location.pathname === '/';
   const isProducts = location.pathname === '/products';
   const isAbout = location.pathname === '/about';
+  const isPricing = location.pathname === '/pricing';
+  const isBlog = location.pathname === '/blog';
+  const isContact = location.pathname === '/contact';
 
   return (
-    <nav className="fixed top-0 w-full bg-[#100b29] z-50 border-b border-white/5">
+    <nav className={`fixed top-0 w-full bg-[#100b29] z-50 border-b border-white/5 transition-transform duration-300 ease-in-out ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-[88px] items-center">
           {/* Logo */}
@@ -46,9 +67,9 @@ const Navbar = () => {
               </div>
             </div>
             <Link to="/about" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isAbout ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>About</Link>
-            <a href="/#pricing" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Pricing</a>
-            <a href="/#blogs" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Blogs</a>
-            <a href="/#contact" className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">Contact</a>
+            <Link to="/pricing" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isPricing ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Pricing</Link>
+            <Link to="/blog" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isBlog ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Blogs</Link>
+            <Link to="/contact" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isContact ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Contact</Link>
           </div>
 
           {/* CTA Button */}
@@ -90,9 +111,9 @@ const Navbar = () => {
             </div>
           )}
           <Link to="/about" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isAbout ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>About</Link>
-          <a href="/#pricing" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Pricing</a>
-          <a href="/#blogs" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Blogs</a>
-          <a href="/#contact" onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium">Contact</a>
+          <Link to="/pricing" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isPricing ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Pricing</Link>
+          <Link to="/blog" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isBlog ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Blogs</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isContact ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Contact</Link>
           <div className="pt-6">
             <a
               href={LOGIN_URL}
