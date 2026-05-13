@@ -1,6 +1,6 @@
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import rakshamLogo from '../assets/Raksham_logo.png';
 
 const LOGIN_URL = 'https://app.raksham.in/auth/login';
@@ -8,6 +8,9 @@ const LOGIN_URL = 'https://app.raksham.in/auth/login';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const isProducts = location.pathname === '/products';
 
   return (
     <nav className="fixed top-0 w-full bg-[#100b29] z-50 border-b border-white/5">
@@ -21,13 +24,13 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-1 items-center ml-8">
-            <Link to="/" className="text-white bg-[#251e44] px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">
+            <Link to="/" className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors ${isHome ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>
               Home
             </Link>
             <div className="relative group">
               <Link
                 to="/products"
-                className="text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5"
+                className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${isProducts ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}
               >
                 Products <ChevronDown size={16} className="transition-transform duration-200 group-hover:rotate-180" />
               </Link>
@@ -69,9 +72,9 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-[#100b29] border-t border-white/10 p-4 flex flex-col space-y-2 shadow-2xl h-screen">
-          <Link to="/" onClick={() => setIsOpen(false)} className="text-white bg-[#251e44] px-4 py-3 rounded-lg font-medium">Home</Link>
+          <Link to="/" onClick={() => setIsOpen(false)} className={`px-4 py-3 rounded-lg font-medium ${isHome ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>Home</Link>
           <div className="flex justify-between items-center">
-            <Link to="/products" onClick={() => setIsOpen(false)} className="text-left text-gray-300 hover:text-white px-4 py-3 rounded-lg font-medium flex-1">
+            <Link to="/products" onClick={() => setIsOpen(false)} className={`text-left px-4 py-3 rounded-lg font-medium flex-1 ${isProducts ? 'text-white bg-[#251e44]' : 'text-gray-300 hover:text-white'}`}>
               Products
             </Link>
             <button onClick={() => setIsProductsOpen(!isProductsOpen)} className="text-gray-300 hover:text-white px-4 py-3 rounded-lg">
