@@ -49,7 +49,7 @@ function App() {
     // LazyMotion + `m` components: loads only the DOM animation features we use (smaller bundle)
     <LazyMotion features={domAnimation} strict>
     <MotionConfig reducedMotion="user">
-    <div className="min-h-screen flex flex-col font-sans bg-surface selection:bg-indigo-100 selection:text-indigo-900 dark:selection:bg-indigo-500/40 dark:selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans bg-surface selection:bg-indigo-100 selection:text-indigo-900">
       <Navbar />
       <ScrollManager />
       <main id="main-content" className="flex-grow">

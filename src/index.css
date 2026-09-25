@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/geist";
 
-/* `dark:` follows the .dark class on <html> (set before paint in index.html) */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   /* Apple devices get San Francisco (the system font); everyone else gets Geist */
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Geist Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -16,7 +13,7 @@
   /* Text links: a deeper indigo so small text passes WCAG AA on white */
   --color-link: #4f46e5;
 
-  /* Semantic surface + text tokens; swapped for dark mode below */
+  /* Semantic surface + text tokens */
   --color-surface: #ffffff;
   --color-surface-2: #f5f5f7;
   --color-tile: #fbfbfd;
@@ -27,22 +24,10 @@
   --color-line: #d2d2d7;
 }
 
-.dark {
-  --color-link: #a5b4fc;
-  --color-primary-light: rgba(129, 140, 248, 0.14);
-  --color-surface: #0b0914;
-  --color-surface-2: #131022;
-  --color-tile: #1a1630;
-  --color-tile-accent: #1a1540;
-  --color-ink: #f5f5f7;
-  --color-body: #c7c7cc;
-  --color-muted: #98989d;
-  --color-line: rgba(255, 255, 255, 0.1);
-  color-scheme: dark;
-}
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
@@ -68,15 +53,16 @@ body {
   animation-play-state: paused;
 }
 
-/* ── Dark hero backdrop: indigo light + fading grid ─ */
+/* ── Hero backdrop: soft indigo light + faint grid, fading out ─ */
 .hero-backdrop {
   background:
-    radial-gradient(55% 60% at 85% 20%, rgba(99, 102, 241, 0.2), transparent 70%),
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 56px 56px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 56px 56px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
-  mask-image: linear-gradient(to bottom, #000 40%, transparent);
+    radial-gradient(55% 60% at 50% 0%, rgba(99, 102, 241, 0.12), transparent 70%),
+    linear-gradient(rgba(16, 11, 41, 0.04) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(16, 11, 41, 0.04) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent 85%);
 }
+
 
 /* ── Reduced motion (Motion animations handle this via MotionConfig) ─── */
 @media (prefers-reduced-motion: reduce) {

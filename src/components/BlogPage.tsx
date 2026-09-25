@@ -28,7 +28,7 @@ const blogs = [
       "How automated payroll reduces errors, saves time and stays compliant, using Raksham's attendance and shift data for accurate, timely payments.",
     label: 'Payroll',
     img: rakshamWebSec,
-    imgBg: 'bg-navy dark:ring-1 dark:ring-white/10',
+    imgBg: 'bg-surface-2',
   },
 ];
 

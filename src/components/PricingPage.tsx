@@ -117,13 +117,13 @@ const PricingPage = () => {
           {plans.map((plan, i) => (
             <article
               key={plan.name}
-              className={`rounded-3xl p-10 md:p-12 flex flex-col ${i === 1 ? 'bg-navy text-white dark:ring-1 dark:ring-white/10' : 'bg-surface-2'}`}
+              className={`rounded-3xl p-10 md:p-12 flex flex-col ${i === 1 ? 'bg-tile-accent ring-2 ring-primary' : 'bg-surface-2'}`}
             >
               <div className="flex items-center justify-between">
-                <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight ${i === 1 ? 'text-white' : 'text-ink'}`}>{plan.name}</h2>
+                <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight text-ink`}>{plan.name}</h2>
                 {i === 1 && <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">Most complete</span>}
               </div>
-              <p className={`mt-3 flex-1 text-lg leading-snug ${i === 1 ? 'text-gray-300' : 'text-body'}`}>{plan.blurb}</p>
+              <p className={`mt-3 flex-1 text-lg leading-snug text-body`}>{plan.blurb}</p>
               <a
                 href={SALES_EMAIL}
                 className={`mt-10 inline-flex justify-center rounded-full px-6 py-3 text-[17px] transition-all active:scale-[0.98] ${

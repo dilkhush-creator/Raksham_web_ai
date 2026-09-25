@@ -9,24 +9,25 @@ type TileProps = {
   tagline: string;
   img: string;
   alt: string;
-  dark?: boolean;
+  /** Soft indigo background, to vary the tile grid. */
+  tinted?: boolean;
   wide?: boolean;
   showLinks: boolean;
 };
 
 /** Apple-style product tile: centred name + tagline + links, image underneath. */
-const Tile = ({ name, tagline, img, alt, dark = false, wide = false, showLinks }: TileProps) => (
+const Tile = ({ name, tagline, img, alt, tinted = false, wide = false, showLinks }: TileProps) => (
   <article
     className={`group flex flex-col items-center text-center overflow-hidden rounded-3xl pt-12 md:pt-16 px-6 ${
-      dark ? 'bg-navy dark:ring-1 dark:ring-white/10' : 'bg-surface'
+      tinted ? 'bg-tile-accent' : 'bg-surface'
     } ${wide ? 'md:col-span-2' : ''}`}
   >
-    <h3 className={`text-4xl md:text-5xl font-semibold tracking-tight ${dark ? 'text-white' : 'text-ink'}`}>{name}</h3>
-    <p className={`mt-3 max-w-[34ch] text-lg md:text-xl leading-snug ${dark ? 'text-white/70' : 'text-body'}`}>{tagline}</p>
+    <h3 className="text-4xl md:text-5xl font-semibold text-ink tracking-tight">{name}</h3>
+    <p className="mt-3 max-w-[34ch] text-lg md:text-xl text-body leading-snug">{tagline}</p>
     {showLinks && (
       <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2">
-        <ChevronLink to="/products" className={dark ? 'text-indigo-300' : 'text-link'}>Learn more</ChevronLink>
-        <ChevronLink to="/contact" className={dark ? 'text-indigo-300' : 'text-link'}>Book a demo</ChevronLink>
+        <ChevronLink to="/products" className="text-link">Learn more</ChevronLink>
+        <ChevronLink to="/contact" className="text-link">Book a demo</ChevronLink>
       </div>
     )}
     <img
@@ -69,7 +70,7 @@ const Products = ({ showLinks = true }: { showLinks?: boolean }) => {
             showLinks={showLinks}
           />
           <Tile
-            dark
+            tinted
             name="Guard App"
             tagline="Shifts, incidents and random sleep alerts that keep guards alert."
             img={phoneGuard}

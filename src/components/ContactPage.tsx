@@ -16,7 +16,7 @@ const EMPTY_FORM = { name: '', email: '', phone: '', org: '', location: '', indu
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-const Req = () => <span className="text-red-600 dark:text-red-400" aria-hidden="true">*</span>;
+const Req = () => <span className="text-red-600" aria-hidden="true">*</span>;
 
 const ContactPage = () => {
   const [form, setForm] = useState(EMPTY_FORM);
@@ -125,8 +125,8 @@ const ContactPage = () => {
           <div className="lg:col-span-8 rounded-3xl bg-surface-2 p-6 sm:p-10 md:p-12">
             {status === 'success' ? (
               <div className="min-h-[420px] flex flex-col items-center justify-center text-center gap-4" role="status">
-                <div className="w-16 h-16 rounded-full bg-green-50 dark:bg-green-500/15 flex items-center justify-center">
-                  <CheckCircle size={36} className="text-green-600 dark:text-green-400" />
+                <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center">
+                  <CheckCircle size={36} className="text-green-600" />
                 </div>
                 <h3 className="text-2xl font-semibold text-ink">Message sent</h3>
                 <p className="text-body max-w-xs leading-relaxed">
@@ -186,7 +186,7 @@ const ContactPage = () => {
                   </div>
 
                   {status === 'error' && (
-                    <div role="alert" className="sm:col-span-2 bg-red-50 border border-red-200 text-red-700 dark:bg-red-500/10 dark:border-red-500/30 dark:text-red-300 text-sm rounded-lg px-4 py-3">
+                    <div role="alert" className="sm:col-span-2 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
                       {errorMsg}
                     </div>
                   )}

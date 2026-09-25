@@ -71,10 +71,10 @@ const Clients = () => {
         {/* Trusted by */}
         <div className="text-center">
           <h2 className="text-4xl md:text-6xl font-semibold text-ink tracking-tight leading-[1.08]">
-            Trusted by 50+ clients
-            <br className="hidden sm:block" /> across 17 cities.
+            Trusted by 200+ clients
+            <br className="hidden sm:block" /> across 21 cities.
           </h2>
-          <p className="mt-4 text-lg md:text-xl text-muted">More than 8,000 staff and guards managed on Raksham.</p>
+          <p className="mt-4 text-lg md:text-xl text-muted">More than 19,000+ staff and guards managed on Raksham.</p>
         </div>
 
         {/* Auto-scrolling logo marquee */}
@@ -125,7 +125,7 @@ const Clients = () => {
             key={t.name}
             className="snap-start shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-3xl p-8 md:p-10 flex flex-col"
           >
-            <img src={t.logo} alt={t.company} className="h-10 w-auto self-start object-contain dark:bg-white dark:rounded-md dark:p-1" />
+            <img src={t.logo} alt={t.company} className="h-10 w-auto self-start object-contain" />
             <blockquote className="mt-8 flex-1 text-xl text-ink leading-snug tracking-tight">
               “{t.quote}”
             </blockquote>

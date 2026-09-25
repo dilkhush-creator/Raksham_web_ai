@@ -20,7 +20,7 @@ const Footer = () => {
             <p className="mt-4 text-muted leading-relaxed max-w-[36ch]">
               Reliable tools for attendance, payroll and employee records. Your business, effortlessly managed.
             </p>
-            <a href="#" aria-label="Raksham on LinkedIn" className="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-full bg-primary-light text-primary hover:bg-primary hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/company/raksham/" target="_blank" rel="noopener noreferrer" aria-label="Raksham on LinkedIn" className="mt-5 inline-flex w-9 h-9 items-center justify-center rounded-full bg-primary-light text-primary hover:bg-primary hover:text-white transition-colors">
               <LinkedinLogo size={22} weight="fill" />
             </a>
           </div>
@@ -67,21 +67,19 @@ const Footer = () => {
         <div className="border-t border-line pt-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-muted md:w-1/2">
             <p>© {new Date().getFullYear()} NammaRaksham AI Private Limited. All rights reserved.</p>
-            <p className="mt-1">Developed & Managed By <a href="#" className="text-primary hover:underline">Static Consultancy</a></p>
+            <p className="mt-1">Developed & Managed By <a href="https://www.raksham.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Raksham AI</a></p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <span className="font-medium text-ink mr-2">Get the app</span>
-            {/* TODO: real Play Store URL */}
-            <a href="#" className="bg-gray-900 dark:ring-1 dark:ring-white/15 text-white px-4 py-2 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors">
+            <a href="https://play.google.com/store/apps/details?id=com.raksham.raksham" target="_blank" rel="noopener noreferrer" className="bg-gray-900 text-white px-4 py-2 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors">
               <GooglePlayLogo size={26} weight="fill" />
               <div className="text-left">
                 <div className="text-[10px] uppercase leading-none opacity-90 tracking-wider">GET IT ON</div>
                 <div className="text-base font-semibold leading-none mt-1">Google Play</div>
               </div>
             </a>
-            {/* TODO: real App Store URL */}
-            <a href="#" className="bg-gray-900 dark:ring-1 dark:ring-white/15 text-white px-4 py-2 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors">
+            <a href="https://apps.apple.com/in/app/raksham/id6740204818" target="_blank" rel="noopener noreferrer" className="bg-gray-900 text-white px-4 py-2 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-colors">
               <AppStoreLogo size={26} weight="fill" />
               <div className="text-left">
                 <div className="text-[10px] uppercase leading-none opacity-90 tracking-wider">Available on the</div>

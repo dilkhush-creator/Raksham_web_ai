@@ -17,21 +17,21 @@ const Hero = () => {
 
   return (
     <>
-      <section ref={ref} id="home" className="relative overflow-hidden bg-navy pt-28 md:pt-32 pb-16 md:pb-24">
+      <section ref={ref} id="home" className="relative overflow-hidden bg-surface pt-28 md:pt-32 pb-16 md:pb-24">
         <div className="hero-backdrop pointer-events-none absolute inset-0" />
 
         <Rise className="relative max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-semibold text-white tracking-[-0.03em] leading-[1.02]">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-semibold text-ink tracking-[-0.03em] leading-[1.02]">
             Your workforce.
             <br />
             <span className="text-primary">One command center.</span>
           </h1>
-          <p className="mt-6 mx-auto max-w-[40ch] text-lg md:text-2xl text-white/70 leading-snug">
+          <p className="mt-6 mx-auto max-w-[40ch] text-lg md:text-2xl text-body leading-snug">
             Attendance, staff, guards and payroll for every site, in one platform.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             <PillLink to="/contact">Book a demo</PillLink>
-            <ChevronLink to="/products" className="text-indigo-300">See products</ChevronLink>
+            <ChevronLink to="/products" className="text-link">See products</ChevronLink>
           </div>
         </Rise>
 

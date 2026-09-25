@@ -8,9 +8,9 @@ import CountUp from './motion/CountUp';
 import ScrollStatement from './motion/ScrollStatement';
 
 const stats = [
-  { value: 50, suffix: '+', label: 'clients' },
-  { value: 17, suffix: '', label: 'cities' },
-  { value: 8000, suffix: '+', label: 'staff and guards' },
+  { value: 200, suffix: '+', label: 'clients' },
+  { value: 21, suffix: '', label: 'cities' },
+  { value: 19000, suffix: '+', label: 'staff and guards' },
 ];
 
 const values = [
@@ -67,9 +67,9 @@ const AboutPage = () => {
       {/* Who we are / vision / mission */}
       <Section className="bg-surface-2 pb-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-4">
-          <article className="lg:col-span-3 lg:row-span-2 relative overflow-hidden rounded-3xl bg-navy dark:ring-1 dark:ring-white/10 p-10 md:p-14 flex flex-col">
-            <h3 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">Who we are.</h3>
-            <p className="mt-4 max-w-[40ch] text-white/70 text-lg md:text-xl leading-snug">
+          <article className="lg:col-span-3 lg:row-span-2 relative overflow-hidden rounded-3xl bg-tile-accent p-10 md:p-14 flex flex-col">
+            <h3 className="text-4xl md:text-5xl font-semibold text-ink tracking-tight">Who we are.</h3>
+            <p className="mt-4 max-w-[40ch] text-body text-lg md:text-xl leading-snug">
               Raksham builds workforce management software that helps businesses streamline operations and boost productivity.
             </p>
             <img
