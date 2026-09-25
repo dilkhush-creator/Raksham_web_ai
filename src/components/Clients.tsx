@@ -21,6 +21,11 @@ import Sheetal from '../assets/clients/sheetal.jpg';
 import Smitha from '../assets/clients/smitha.jpg';
 import Thejas from '../assets/clients/Thejas.jpg';
 import client112 from '../assets/clients/112-r7j722tdzbpbzfcfb0dvqukes9owq81kwwrl47jz5a.png';
+import clientEagle from '../assets/clients/client-eagle-since-1982.jpeg';
+import clientPracto from '../assets/clients/client-practo.jpeg';
+import clientSentinels from '../assets/clients/client-sentinels-security.jpeg';
+import clientArmour from '../assets/clients/client-armour-security.jpeg';
+import clientDp from '../assets/clients/client-dp-legacy-redefined.jpeg';
 import { useRef } from 'react';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 import Section from './motion/Section';
@@ -30,6 +35,7 @@ const logos = [
   client12, client13, client18, client19, client20,
   client21, client22, client23, client25, client26,
   client27, client29, client30, client33, client113, client114,
+  clientEagle, clientPracto, clientSentinels, clientArmour, clientDp,
 ];
 
 const testimonials = [

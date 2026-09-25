@@ -5,12 +5,11 @@ import Section from './motion/Section';
 
 const SALES_EMAIL = 'mailto:contact@raksham.ai';
 
-const Check = () => (
-  <span className="mx-auto flex w-7 h-7 items-center justify-center rounded-full bg-primary-light">
-    <CheckIcon size={16} weight="bold" className="text-primary" aria-label="Included" />
-  </span>
-);
-const Cross = () => <Minus size={18} className="mx-auto text-muted opacity-60" aria-label="Not included" />;
+const Check = () => <CheckIcon size={20} weight="bold" className="mx-auto text-primary" aria-label="Included" />;
+const Cross = () => <Minus size={18} className="mx-auto text-muted/40" aria-label="Not included" />;
+
+// Feature label column + two plan columns; shared by the sticky header and every row so they line up
+const COLS = 'grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_160px_160px] items-center gap-x-2';
 
 const plans = [
   { name: 'Advance', blurb: 'Attendance, reports, timeline and live tracking for every site.' },
@@ -140,32 +139,44 @@ const PricingPage = () => {
       {/* Comparison table */}
       <Section className="bg-surface py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-14">Compare plans.</h2>
+          <h2 className="text-center text-4xl md:text-5xl font-semibold text-ink tracking-tight">Compare plans.</h2>
+          <p className="mt-4 text-center text-lg text-muted">Attendance and report features in each plan.</p>
 
-          {/* Sticky header sits just below the 56px navbar */}
-          <div className="sticky top-14 z-20 grid grid-cols-[1fr_96px_96px] sm:grid-cols-[1fr_140px_140px] border-b border-line bg-surface/90 backdrop-blur">
-            <div className="py-4 text-sm font-medium text-muted">Attendance and report features</div>
-            <div className="py-4 text-center font-semibold text-ink">Advance</div>
-            <div className="py-4 text-center font-semibold text-primary">Ultimate</div>
+          {/* Sticky header follows the navbar: right under it when shown, at the very top when it hides */}
+          <div className={`${COLS} sticky top-(--nav-offset) z-20 mt-14 bg-surface border-b border-line px-6 md:px-8 py-4 transition-[top] duration-300 ease-in-out`}>
+            {/* self-start: sits on the same line as the plan names, not centred against the buttons */}
+            <span className="self-start text-lg md:text-xl font-semibold text-ink tracking-tight">Features</span>
+            {plans.map((plan, i) => (
+              <div key={plan.name} className="text-center">
+                <div className={`text-lg md:text-xl font-semibold tracking-tight ${i === 1 ? 'text-primary' : 'text-ink'}`}>{plan.name}</div>
+                <a
+                  href={SALES_EMAIL}
+                  className={`hidden sm:inline-flex mt-2 rounded-full px-4 py-1.5 text-sm transition-all active:scale-[0.98] ${
+                    i === 1 ? 'bg-primary hover:bg-primary-hover text-white' : 'border border-current text-link hover:bg-primary hover:border-primary hover:text-white'
+                  }`}
+                >
+                  Get started
+                </a>
+              </div>
+            ))}
           </div>
 
-          {sections.map((section) => (
-            <div key={section.heading} className="pt-10">
-              <h3 className="pb-3 font-semibold text-ink">{section.heading}</h3>
-              <div className="divide-y divide-line border-t border-line">
-                {section.rows.map((row) => (
-                  <div
-                    key={row.label}
-                    className="grid grid-cols-[1fr_96px_96px] sm:grid-cols-[1fr_140px_140px] items-center hover:bg-tile transition-colors"
-                  >
-                    <div className="py-4 pr-4 text-body text-[15px] leading-snug">{row.label}</div>
-                    <div className="py-4">{row.advance ? <Check /> : <Cross />}</div>
-                    <div className="py-4">{row.ultimate ? <Check /> : <Cross />}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="mt-6 space-y-4">
+            {sections.map((section) => (
+              <section key={section.heading} className="rounded-3xl bg-surface-2 px-6 md:px-8 py-2">
+                <h3 className="pt-5 pb-3 text-lg font-semibold text-ink tracking-tight">{section.heading}</h3>
+                <div className="divide-y divide-line/70">
+                  {section.rows.map((row) => (
+                    <div key={row.label} className={`${COLS} py-3.5`}>
+                      <div className="pr-4 text-[15px] text-body leading-snug">{row.label}</div>
+                      <div>{row.advance ? <Check /> : <Cross />}</div>
+                      <div>{row.ultimate ? <Check /> : <Cross />}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       </Section>
     </>

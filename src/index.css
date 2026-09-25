@@ -26,6 +26,7 @@
 
 
 html {
+  --nav-offset: 3.5rem; /* updated by Navbar when it hides/shows */
   scroll-behavior: smooth;
   color-scheme: light;
 }

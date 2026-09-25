@@ -27,6 +27,11 @@ const Navbar = () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Publish the navbar's visible height so sticky elements (e.g. the pricing table header) can sit right under it
+  useEffect(() => {
+    document.documentElement.style.setProperty('--nav-offset', navHidden ? '0px' : '3.5rem');
+  }, [navHidden]);
   const isHome = location.pathname === '/';
   const isProducts = location.pathname === '/products';
   const isAbout = location.pathname === '/about';
