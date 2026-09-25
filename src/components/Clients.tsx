@@ -21,6 +21,9 @@ import Sheetal from '../assets/clients/sheetal.jpg';
 import Smitha from '../assets/clients/smitha.jpg';
 import Thejas from '../assets/clients/Thejas.jpg';
 import client112 from '../assets/clients/112-r7j722tdzbpbzfcfb0dvqukes9owq81kwwrl47jz5a.png';
+import { useRef } from 'react';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import Section from './motion/Section';
 
 const logos = [
   clientFirst, clientSec, clientThird,
@@ -29,41 +32,67 @@ const logos = [
   client27, client29, client30, client33, client113, client114,
 ];
 
+const testimonials = [
+  {
+    logo: client30,
+    company: 'Tiddly Tavern',
+    quote: 'Raksham enables efficient staff management with real-time attendance, task tracking, and performance visibility, streamlining shifts and daily operations.',
+    photo: Smitha,
+    name: 'Smitha Jha',
+    role: 'MD, Tiddly Tavern Bar & Grill',
+  },
+  {
+    logo: client12,
+    company: 'SRF Security',
+    quote: 'Raksham transforms security with real-time guard tracking, automated attendance, smart scheduling, and instant alerts for visibility and quick response.',
+    photo: Sheetal,
+    name: 'Sheetal Kumar',
+    role: 'MD, SRF Security',
+  },
+  {
+    logo: client112,
+    company: 'RapidMan',
+    quote: 'Raksham completely revolutionized our multi-location guard tracking, providing real-time visibility and ensuring accountability across all sites. Highly efficient and recommended!',
+    photo: Thejas,
+    name: 'Thejas',
+    role: 'MD, RapidMan',
+  },
+];
+
 const Clients = () => {
+  const track = useRef<HTMLDivElement>(null);
+  // Scroll the testimonial carousel by roughly one card
+  const scrollBy = (dir: 1 | -1) => track.current?.scrollBy({ left: dir * 440, behavior: 'smooth' });
+
   return (
-    <section className="py-24 bg-[#f8fafc]">
+    <Section className="py-24 md:py-32 bg-surface-2 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Trusted By Stats */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold text-[#111827] mb-6">Trusted by</h2>
-          <p className="text-3xl md:text-4xl font-medium text-[#111827] max-w-4xl mx-auto leading-tight">
-            <span className="text-[#6a5cdb]">50+ clients</span> across{' '}
-            <span className="text-[#6a5cdb]">17 Cities</span> with{' '}
-            <span className="text-[#6a5cdb]">
-              8000+ Staffs and
-              <br className="hidden md:block" />
-              Guards
-            </span>
-          </p>
+        {/* Trusted by */}
+        <div className="text-center">
+          <h2 className="text-4xl md:text-6xl font-semibold text-ink tracking-tight leading-[1.08]">
+            Trusted by 50+ clients
+            <br className="hidden sm:block" /> across 17 cities.
+          </h2>
+          <p className="mt-4 text-lg md:text-xl text-muted">More than 8,000 staff and guards managed on Raksham.</p>
         </div>
 
-        {/* Auto-scrolling Logo Marquee */}
-        <div className="relative overflow-hidden mb-32">
-          {/* Fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-[#f8fafc] to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-[#f8fafc] to-transparent z-10" />
+        {/* Auto-scrolling logo marquee */}
+        <div className="relative overflow-hidden mt-14 mb-28">
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-surface-2 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-surface-2 to-transparent z-10" />
 
-          {/* Scrolling track — duplicated for seamless loop */}
-          <div className="flex items-center gap-6 animate-marquee" style={{ width: 'max-content' }}>
+          {/* Track is duplicated for a seamless loop; the copy is hidden from screen readers */}
+          <div className="flex items-center gap-4 animate-marquee" style={{ width: 'max-content' }}>
             {[...logos, ...logos].map((src, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 h-20 w-44 bg-white rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center px-5 py-3"
+                aria-hidden={i >= logos.length}
+                className="flex-shrink-0 h-20 w-44 bg-white rounded-2xl flex items-center justify-center px-5 py-3"
               >
                 <img
                   src={src}
-                  alt={`client-${i}`}
+                  alt={i < logos.length ? 'Client logo' : ''}
                   className="max-h-full max-w-full object-contain"
                   draggable={false}
                 />
@@ -72,72 +101,45 @@ const Clients = () => {
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#111827]">Client Testimonial</h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Testimonial 1 */}
-          <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col h-full transform transition-transform hover:-translate-y-2 duration-300">
-            <div className="w-24 h-16 mx-auto bg-gray-50 rounded-xl flex items-center justify-center mb-8 border border-gray-100 px-3 py-2">
-              <img src={client30} alt="Tiddly Tavern" className="max-h-full max-w-full object-contain" />
-            </div>
-            <p className="text-gray-600 leading-relaxed flex-1 mb-10 text-[15px]">
-              Raksham enables efficient staff management with real-time attendance, task tracking, and performance visibility—streamlining shifts and daily operations.
-            </p>
-            <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-              <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                <img src={Smitha} alt="Smitha Jha" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Smitha Jha</h4>
-                <p className="text-xs text-[#6a5cdb] mt-0.5">MD, Tiddly Tavern<br />Bar &amp; Grill</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial 2 */}
-          <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col h-full transform transition-transform hover:-translate-y-2 duration-300">
-            <div className="w-24 h-16 mx-auto bg-gray-50 rounded-xl flex items-center justify-center mb-8 border border-gray-100 px-3 py-2">
-              <img src={client12} alt="SRF Security" className="max-h-full max-w-full object-contain" />
-            </div>
-            <p className="text-gray-600 leading-relaxed flex-1 mb-10 text-[15px]">
-              Raksham transforms security with real-time guard tracking, automated attendance, smart scheduling, and instant alerts for visibility and quick response.
-            </p>
-            <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-              <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                <img src={Sheetal} alt="Sheetal Kumar" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Sheetal Kumar</h4>
-                <p className="text-xs text-[#6a5cdb] mt-0.5">MD - SRF Security</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial 3 */}
-          <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col h-full transform transition-transform hover:-translate-y-2 duration-300">
-            <div className="w-24 h-16 mx-auto bg-gray-50 rounded-xl flex items-center justify-center mb-8 border border-gray-100 px-3 py-2">
-              <img src={client112} alt="RapidMan" className="max-h-full max-w-full object-contain" />
-            </div>
-            <p className="text-gray-600 leading-relaxed flex-1 mb-10 text-[15px]">
-              Raksham completely revolutionized our multi-location guard tracking, providing real-time visibility and ensuring accountability across all sites. Highly efficient and recommended!
-            </p>
-            <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-              <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                <img src={Thejas} alt="Thejas" className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Thejas</h4>
-                <p className="text-xs text-[#6a5cdb] mt-0.5">MD RapidMan</p>
-              </div>
-            </div>
+        {/* Testimonials carousel */}
+        <div className="flex items-end justify-between gap-6">
+          <h2 className="text-3xl md:text-5xl font-semibold text-ink tracking-tight">What our clients say.</h2>
+          <div className="hidden sm:flex gap-3">
+            <button onClick={() => scrollBy(-1)} aria-label="Previous testimonial" className="w-11 h-11 rounded-full bg-line/60 hover:bg-line text-ink flex items-center justify-center transition-colors">
+              <CaretLeft size={18} weight="bold" />
+            </button>
+            <button onClick={() => scrollBy(1)} aria-label="Next testimonial" className="w-11 h-11 rounded-full bg-line/60 hover:bg-line text-ink flex items-center justify-center transition-colors">
+              <CaretRight size={18} weight="bold" />
+            </button>
           </div>
         </div>
-
       </div>
-    </section>
+
+      {/* Full-bleed track that lines up with the page container; scroll-px keeps snapping from eating that padding */}
+      <div
+        ref={track}
+        className="no-scrollbar mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-[max(2rem,calc((100vw_-_80rem)/2_+_2rem))] scroll-px-4 sm:scroll-px-6 lg:scroll-px-[max(2rem,calc((100vw_-_80rem)/2_+_2rem))] pb-4"
+      >
+        {testimonials.map((t) => (
+          <figure
+            key={t.name}
+            className="snap-start shrink-0 w-[85vw] sm:w-[420px] bg-surface rounded-3xl p-8 md:p-10 flex flex-col"
+          >
+            <img src={t.logo} alt={t.company} className="h-10 w-auto self-start object-contain dark:bg-white dark:rounded-md dark:p-1" />
+            <blockquote className="mt-8 flex-1 text-xl text-ink leading-snug tracking-tight">
+              “{t.quote}”
+            </blockquote>
+            <figcaption className="mt-10 flex items-center gap-4">
+              <img src={t.photo} alt="" className="w-11 h-11 rounded-full object-cover" />
+              <div>
+                <div className="font-semibold text-ink text-sm">{t.name}</div>
+                <div className="text-sm text-muted">{t.role}</div>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Section>
   );
 };
 

@@ -1,53 +1,54 @@
-import { BarChart3, Wallet, Download } from 'lucide-react';
+import { CalendarCheck, ListChecks, Wallet } from '@phosphor-icons/react';
+import { m } from 'motion/react';
+import Section from './motion/Section';
+import ScrollStatement from './motion/ScrollStatement';
+
+const features = [
+  {
+    icon: CalendarCheck,
+    title: 'Attendance',
+    body: 'Real-time attendance with geo-fencing, shift monitoring and automated alerts.',
+  },
+  {
+    icon: ListChecks,
+    title: 'Tasks',
+    body: 'Assign, track and monitor tasks as they happen, so every job has an owner.',
+  },
+  {
+    icon: Wallet,
+    title: 'Payroll',
+    body: 'Calculated from attendance and overtime, paid on time and compliant with labour laws.',
+  },
+];
 
 const Features = () => {
   return (
-    <section id="features" className="py-24 bg-[#f8fafc]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-[44px] font-bold text-[#111827] mb-6">Key features</h2>
-          <p className="text-[17px] text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            <strong className="text-gray-900">Raksham's</strong> key features—Activity Monitoring, Task Management, and<br className="hidden md:block" />
-            Geo-Tracking—streamline operations and boost workforce efficiency.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Feature 1 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
-              <BarChart3 size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Attendance Management</h3>
-            <p className="text-gray-600 leading-relaxed text-[15px]">
-              Track employee attendance in real-time<br className="hidden lg:block" />with geo-fencing, shift monitoring, and<br className="hidden lg:block" />automated alerts for seamless<br className="hidden lg:block" />management.
-            </p>
-          </div>
-          
-          {/* Feature 2 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
-              <Wallet size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Task Management</h3>
-            <p className="text-gray-600 leading-relaxed text-[15px]">
-              Assign, track, and monitor tasks in real-<br className="hidden lg:block" />time, ensuring efficient completion and<br className="hidden lg:block" />workforce accountability.
-            </p>
-          </div>
-          
-          {/* Feature 3 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center mb-8 shadow-[0_10px_40px_rgb(106,92,219,0.15)]">
-              <Download size={36} className="text-[#6a5cdb]" strokeWidth={2.5} />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Payroll Management</h3>
-            <p className="text-gray-600 leading-relaxed text-[15px]">
-              Automate payroll based on attendance<br className="hidden lg:block" />and overtime, ensuring accurate, timely<br className="hidden lg:block" />payments and compliance with labor<br className="hidden lg:block" />laws.
-            </p>
-          </div>
-        </div>
+    <Section id="features" className="bg-surface py-24 md:py-40">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="sr-only">Key features</h2>
+        {/* Words light up one by one as the visitor scrolls */}
+        <ScrollStatement
+          text="Raksham brings attendance, tasks and payroll into one live system, so every site, every shift and every salary is accounted for."
+          className="text-3xl sm:text-4xl md:text-6xl font-semibold text-ink tracking-tight leading-[1.1]"
+        />
+
+        <ul className="mt-20 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 border-t border-line pt-12">
+          {features.map(({ icon: Icon, title, body }, i) => (
+            <m.li
+              key={title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Icon size={36} className="text-primary" />
+              <h3 className="mt-5 text-2xl font-semibold text-ink tracking-tight">{title}</h3>
+              <p className="mt-2 text-lg text-body leading-snug">{body}</p>
+            </m.li>
+          ))}
+        </ul>
       </div>
-    </section>
+    </Section>
   );
 };
 

@@ -1,123 +1,84 @@
-import { CheckSquare, ArrowRight, LayoutDashboard, CalendarDays } from 'lucide-react';
 import rakshamWebSec from '../assets/Raksham_web_sec.png';
 import phoneFirst from '../assets/Phone_first.png';
 import phoneGuard from '../assets/Phone_gard_image.png';
+import Section from './motion/Section';
+import { ChevronLink } from './ui';
 
-const Products = () => {
+type TileProps = {
+  name: string;
+  tagline: string;
+  img: string;
+  alt: string;
+  dark?: boolean;
+  wide?: boolean;
+  showLinks: boolean;
+};
+
+/** Apple-style product tile: centred name + tagline + links, image underneath. */
+const Tile = ({ name, tagline, img, alt, dark = false, wide = false, showLinks }: TileProps) => (
+  <article
+    className={`group flex flex-col items-center text-center overflow-hidden rounded-3xl pt-12 md:pt-16 px-6 ${
+      dark ? 'bg-navy dark:ring-1 dark:ring-white/10' : 'bg-surface'
+    } ${wide ? 'md:col-span-2' : ''}`}
+  >
+    <h3 className={`text-4xl md:text-5xl font-semibold tracking-tight ${dark ? 'text-white' : 'text-ink'}`}>{name}</h3>
+    <p className={`mt-3 max-w-[34ch] text-lg md:text-xl leading-snug ${dark ? 'text-white/70' : 'text-body'}`}>{tagline}</p>
+    {showLinks && (
+      <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2">
+        <ChevronLink to="/products" className={dark ? 'text-indigo-300' : 'text-link'}>Learn more</ChevronLink>
+        <ChevronLink to="/contact" className={dark ? 'text-indigo-300' : 'text-link'}>Book a demo</ChevronLink>
+      </div>
+    )}
+    <img
+      src={img}
+      alt={alt}
+      loading="lazy"
+      className={`mt-10 w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03] ${
+        wide ? 'max-w-full md:max-w-4xl' : 'h-[300px] md:h-[380px]'
+      }`}
+    />
+  </article>
+);
+
+// On the Products page itself the 'Learn more' links would point back to the same page, so they're hidden there
+const Products = ({ showLinks = true }: { showLinks?: boolean }) => {
   return (
-    <section id="products" className="py-24 relative bg-white">
-      {/* Subtle background grid lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px)', backgroundSize: '200px 100%' }}></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-6">Our products</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A wide selection of tailored products to simplify staff management, payroll,<br />
-            and compliance, customized for your business needs.
-          </p>
-        </div>
+    <Section id="products" className="bg-surface-2 py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-center text-4xl md:text-6xl font-semibold text-ink tracking-tight">
+          Three products. One system.
+        </h2>
+        <p className="mt-4 text-center text-lg md:text-xl text-muted">
+          A web dashboard for managers, and apps for your staff and guards.
+        </p>
 
-        {/* Main Card Container */}
-        <div className="bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-16 border border-gray-100 flex flex-col gap-24">
-          
-          {/* Raksham Web Row */}
-          <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
-            {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-              {/* Subtle glow behind image */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[300px] h-[200px] bg-[#6366f1]/8 rounded-full blur-[60px]"></div>
-              </div>
-              <img 
-                src={rakshamWebSec} 
-                alt="Raksham Web Dashboard" 
-                className="relative z-10 w-full h-auto rounded-xl object-contain drop-shadow-[0_20px_40px_rgba(106,92,219,0.2)]"
-              />
-            </div>
-
-            {/* Text Side */}
-            <div className="w-full md:w-1/2">
-              <div className="w-16 h-16 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6">
-                <CheckSquare className="text-[#38bdf8]" size={32} />
-              </div>
-              <h3 className="text-3xl font-bold text-[#1a1a2e] mb-4">Raksham Web</h3>
-              <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                <strong className="text-gray-900">Raksham's</strong> Web allows organizations to monitor employee activity and track live progress, ensuring real-time insights into productivity and performance for better workforce management and operational efficiency
-              </p>
-              <a href="#" className="inline-flex items-center text-[#6366f1] font-semibold text-lg hover:underline decoration-2 underline-offset-4">
-                Explore Raksham Web <ArrowRight className="ml-2" size={20} />
-              </a>
-            </div>
-          </div>
-
-          <hr className="border-gray-100" />
-
-          {/* Staff App Row */}
-          <div className="flex flex-col-reverse md:flex-row items-center gap-12 lg:gap-24">
-            {/* Text Side */}
-            <div className="w-full md:w-1/2">
-              <div className="w-16 h-16 bg-[#f3e8ff] rounded-2xl flex items-center justify-center mb-6">
-                <LayoutDashboard className="text-[#a855f7]" size={32} />
-              </div>
-              <h3 className="text-3xl font-bold text-[#1a1a2e] mb-4">Staff App</h3>
-              <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                <strong className="text-gray-900">Raksham's</strong> staff app enables employees to track their tasks, update progress, and stay connected in real-time, offering a seamless way to manage daily activities and boost overall productivity.
-              </p>
-              <a href="#" className="inline-flex items-center text-[#6366f1] font-semibold text-lg hover:underline decoration-2 underline-offset-4">
-                Explore Staff App <ArrowRight className="ml-2" size={20} />
-              </a>
-            </div>
-
-            
-            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-              {/* Subtle glow behind image */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
-              </div>
-              <img
-                src={phoneFirst}
-                alt="Raksham Staff App" 
-                className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.3)]"
-              />
-            </div>
-          </div>
-
-          <hr className="border-gray-100" />
-
-          {/* Guard App Row */}
-          <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
-            {/* Image Side */}
-            <div className="w-full md:w-1/2 bg-[#f4f4f8] rounded-3xl p-6 flex items-center justify-center min-h-[400px] relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
-              {/* Subtle glow behind image */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[250px] h-[250px] bg-[#6366f1]/10 rounded-full blur-[60px]"></div>
-              </div>
-              <img
-                src={phoneGuard} 
-                alt="Raksham Guard App" 
-                className="relative z-10 h-[420px] w-auto object-contain drop-shadow-[0_25px_50px_rgba(106,92,219,0.25)]"
-              />
-            </div>
-
-            {/* Text Side */}
-            <div className="w-full md:w-1/2">
-              <div className="w-16 h-16 bg-[#ccfbf1] rounded-2xl flex items-center justify-center mb-6">
-                <CalendarDays className="text-[#14b8a6]" size={32} />
-              </div>
-              <h3 className="text-3xl font-bold text-[#1a1a2e] mb-4">Guard App</h3>
-              <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                <strong className="text-gray-900">Raksham</strong> provides a complete workforce management solution, offering real-time shift scheduling, attendance tracking, incident reporting, OT and leave management, and random sleep alerts to ensure employee alertness and operational efficiency.
-              </p>
-              <a href="#" className="inline-flex items-center text-[#6366f1] font-semibold text-lg hover:underline decoration-2 underline-offset-4">
-                Explore Guard App <ArrowRight className="ml-2" size={20} />
-              </a>
-            </div>
-          </div>
-
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Tile
+            wide
+            name="Raksham Web"
+            tagline="Every site, every shift, live on one dashboard."
+            img={rakshamWebSec}
+            alt="Raksham Web dashboard"
+            showLinks={showLinks}
+          />
+          <Tile
+            name="Staff App"
+            tagline="Tasks, progress and attendance, right from the phone."
+            img={phoneFirst}
+            alt="Raksham Staff App on a phone"
+            showLinks={showLinks}
+          />
+          <Tile
+            dark
+            name="Guard App"
+            tagline="Shifts, incidents and random sleep alerts that keep guards alert."
+            img={phoneGuard}
+            alt="Raksham Guard App on a phone"
+            showLinks={showLinks}
+          />
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

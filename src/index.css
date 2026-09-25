@@ -1,11 +1,44 @@
 @import "tailwindcss";
+@import "@fontsource-variable/geist";
+
+/* `dark:` follows the .dark class on <html> (set before paint in index.html) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #aa3bff;
-  --color-primary-light: rgba(170, 59, 255, 0.1);
-  --color-dark: #08060d;
-  --color-gray: #6b6375;
-  --color-light-gray: #e5e4e7;
+  /* Apple devices get San Francisco (the system font); everyone else gets Geist */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Geist Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  /* One brand accent (indigo) used across the whole site */
+  --color-primary: #6366f1;
+  --color-primary-hover: #5558e8;
+  --color-primary-light: rgba(99, 102, 241, 0.1);
+  --color-navy: #100b29;
+  /* Text links: a deeper indigo so small text passes WCAG AA on white */
+  --color-link: #4f46e5;
+
+  /* Semantic surface + text tokens; swapped for dark mode below */
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f5f7;
+  --color-tile: #fbfbfd;
+  --color-tile-accent: #eef2ff;
+  --color-ink: #1d1d1f;
+  --color-body: #424245;
+  --color-muted: #6e6e73;
+  --color-line: #d2d2d7;
+}
+
+.dark {
+  --color-link: #a5b4fc;
+  --color-primary-light: rgba(129, 140, 248, 0.14);
+  --color-surface: #0b0914;
+  --color-surface-2: #131022;
+  --color-tile: #1a1630;
+  --color-tile-accent: #1a1540;
+  --color-ink: #f5f5f7;
+  --color-body: #c7c7cc;
+  --color-muted: #98989d;
+  --color-line: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
 }
 
 html {
@@ -14,9 +47,10 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-  color: var(--color-gray);
-  background-color: #fff;
+  letter-spacing: -0.011em;
+  font-family: var(--font-sans);
+  color: var(--color-body);
+  background-color: var(--color-surface);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,27 +68,22 @@ body {
   animation-play-state: paused;
 }
 
-/* ── Scroll-reveal ────────────────────────────────── */
-section {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+/* ── Dark hero backdrop: indigo light + fading grid ─ */
+.hero-backdrop {
+  background:
+    radial-gradient(55% 60% at 85% 20%, rgba(99, 102, 241, 0.2), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
 }
 
-section.in-view {
-  opacity: 1;
-  transform: translateY(0);
+/* ── Reduced motion (Motion animations handle this via MotionConfig) ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee { animation: none; }
 }
 
-/* ── Page fade-in on route change ─────────────────── */
-@keyframes pageFadeIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.page-enter {
-  animation: pageFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+/* Horizontal carousels: keep swipe/scroll, hide the bar */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

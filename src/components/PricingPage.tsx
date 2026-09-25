@@ -1,7 +1,21 @@
-import { CheckCircle2, XCircle } from 'lucide-react';
+import { Check as CheckIcon, Minus } from '@phosphor-icons/react';
+import PageHero from './PageHero';
+import { PillLink } from './ui';
+import Section from './motion/Section';
 
-const Check = () => <CheckCircle2 size={22} className="text-[#22c55e] mx-auto" fill="#dcfce7" strokeWidth={2} />;
-const Cross = () => <XCircle size={22} className="text-[#ef4444] mx-auto" fill="#fee2e2" strokeWidth={2} />;
+const SALES_EMAIL = 'mailto:contact@raksham.ai';
+
+const Check = () => (
+  <span className="mx-auto flex w-7 h-7 items-center justify-center rounded-full bg-primary-light">
+    <CheckIcon size={16} weight="bold" className="text-primary" aria-label="Included" />
+  </span>
+);
+const Cross = () => <Minus size={18} className="mx-auto text-muted opacity-60" aria-label="Not included" />;
+
+const plans = [
+  { name: 'Advance', blurb: 'Attendance, reports, timeline and live tracking for every site.' },
+  { name: 'Ultimate', blurb: 'Everything in Advance, plus distance dashboards, tasks and supervisor access.' },
+];
 
 type RowItem = { label: string; advance: boolean; ultimate: boolean };
 type Section = { heading: string; rows: RowItem[] };
@@ -35,7 +49,7 @@ const sections: Section[] = [
   {
     heading: 'Actionable Dashboard',
     rows: [
-      { label: 'View Attendance Summary including - present employees, absent employees, on leave employees', advance: true, ultimate: true },
+      { label: 'Attendance summary: present, absent and on-leave employees', advance: true, ultimate: true },
     ],
   },
   {
@@ -88,105 +102,72 @@ const sections: Section[] = [
 const PricingPage = () => {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-36 pb-20 bg-[#100b29] relative overflow-hidden text-center">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-900/20 blur-[100px]"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-900/20 blur-[100px]"></div>
-        </div>
-        <div className="max-w-3xl mx-auto px-4 relative z-10">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">Pricing</h1>
-          <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed mb-10">
-            Choose from flexible pricing plans tailored to your business needs. Get the right features without overpaying, ensuring value for every budget.
-          </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            <span className="text-gray-300 text-lg">For Enterprise Pricing</span>
-            <a
-              href="mailto:contact@raksham.ai"
-              className="bg-[#6366f1] hover:bg-[#5a5ce6] text-white px-8 py-3 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)]"
-            >
-              Contact Sales
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        label="Pricing"
+        title="Plans that grow with you."
+        subtitle="Get the features you need without paying for the ones you don't."
+      >
+        <PillLink to={SALES_EMAIL}>Contact sales</PillLink>
+        <span className="text-muted">for enterprise pricing</span>
+      </PageHero>
 
-      {/* Comparison Table */}
-      <section className="bg-[#f3f4ff] py-10 pb-20">
+      {/* Plans */}
+      <Section className="bg-surface">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {plans.map((plan, i) => (
+            <article
+              key={plan.name}
+              className={`rounded-3xl p-10 md:p-12 flex flex-col ${i === 1 ? 'bg-navy text-white dark:ring-1 dark:ring-white/10' : 'bg-surface-2'}`}
+            >
+              <div className="flex items-center justify-between">
+                <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight ${i === 1 ? 'text-white' : 'text-ink'}`}>{plan.name}</h2>
+                {i === 1 && <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">Most complete</span>}
+              </div>
+              <p className={`mt-3 flex-1 text-lg leading-snug ${i === 1 ? 'text-gray-300' : 'text-body'}`}>{plan.blurb}</p>
+              <a
+                href={SALES_EMAIL}
+                className={`mt-10 inline-flex justify-center rounded-full px-6 py-3 text-[17px] transition-all active:scale-[0.98] ${
+                  i === 1 ? 'bg-primary hover:bg-primary-hover text-white' : 'bg-surface text-link border border-current hover:bg-primary hover:border-primary hover:text-white'
+                }`}
+              >
+                Get started
+              </a>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      {/* Comparison table */}
+      <Section className="bg-surface py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl shadow-lg">
+          <h2 className="text-center text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-14">Compare plans.</h2>
 
-            {/* Sticky header — sticks below the navbar when you scroll to it */}
-            <div
-              className="sticky z-20 bg-white border-b-2 border-gray-200 shadow-sm rounded-t-2xl"
-              style={{ top: '88px' }}
-            >
-              <div className="grid grid-cols-[1fr_140px_140px]">
-                <div className="px-6 py-5">
-                  <span className="text-xl font-bold text-[#111827]">Attendance &amp; Report Features</span>
-                </div>
-                <div className="px-6 py-5 text-center border-l border-gray-200">
-                  <span className="text-lg font-bold text-[#111827]">Advance</span>
-                </div>
-                <div className="px-6 py-5 text-center border-l border-gray-200">
-                  <span className="text-lg font-bold text-[#111827]">Ultimate</span>
-                </div>
-              </div>
-            </div>
-
-            {/* All feature rows — scroll with the page beneath the stuck header */}
-            <div className="bg-white rounded-b-2xl overflow-hidden">
-              {sections.map((section) => (
-                <div key={section.heading}>
-                  <div className="grid grid-cols-[1fr_140px_140px] bg-[#eef0fb]">
-                    <div className="px-6 py-3.5 col-span-3">
-                      <span className="font-bold text-[#111827] text-[15px]">{section.heading}</span>
-                    </div>
-                  </div>
-                  {section.rows.map((row, i) => (
-                    <div
-                      key={i}
-                      className="grid grid-cols-[1fr_140px_140px] border-t border-gray-100 hover:bg-gray-50/60 transition-colors"
-                    >
-                      <div className="px-6 py-4 text-gray-700 text-[14.5px] leading-snug">{row.label}</div>
-                      <div className="px-6 py-4 flex items-center justify-center border-l border-gray-100">
-                        {row.advance ? <Check /> : <Cross />}
-                      </div>
-                      <div className="px-6 py-4 flex items-center justify-center border-l border-gray-100">
-                        {row.ultimate ? <Check /> : <Cross />}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-
-              {/* Contact Sales / Get Started row */}
-              <div className="grid grid-cols-[1fr_140px_140px] border-t-2 border-gray-200">
-                <div className="px-6 py-5">
-                  <span className="font-bold text-[#111827] text-base">Contact Sales</span>
-                </div>
-                <div className="px-6 py-5 flex items-center justify-center border-l border-gray-200">
-                  <a
-                    href="mailto:contact@raksham.ai"
-                    className="bg-[#6366f1] hover:bg-[#5a5ce6] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all"
-                  >
-                    Get Started
-                  </a>
-                </div>
-                <div className="px-6 py-5 flex items-center justify-center border-l border-gray-200">
-                  <a
-                    href="mailto:contact@raksham.ai"
-                    className="bg-[#6366f1] hover:bg-[#5a5ce6] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all"
-                  >
-                    Get Started
-                  </a>
-                </div>
-              </div>
-            </div>
-
+          {/* Sticky header sits just below the 56px navbar */}
+          <div className="sticky top-14 z-20 grid grid-cols-[1fr_96px_96px] sm:grid-cols-[1fr_140px_140px] border-b border-line bg-surface/90 backdrop-blur">
+            <div className="py-4 text-sm font-medium text-muted">Attendance and report features</div>
+            <div className="py-4 text-center font-semibold text-ink">Advance</div>
+            <div className="py-4 text-center font-semibold text-primary">Ultimate</div>
           </div>
+
+          {sections.map((section) => (
+            <div key={section.heading} className="pt-10">
+              <h3 className="pb-3 font-semibold text-ink">{section.heading}</h3>
+              <div className="divide-y divide-line border-t border-line">
+                {section.rows.map((row) => (
+                  <div
+                    key={row.label}
+                    className="grid grid-cols-[1fr_96px_96px] sm:grid-cols-[1fr_140px_140px] items-center hover:bg-tile transition-colors"
+                  >
+                    <div className="py-4 pr-4 text-body text-[15px] leading-snug">{row.label}</div>
+                    <div className="py-4">{row.advance ? <Check /> : <Cross />}</div>
+                    <div className="py-4">{row.ultimate ? <Check /> : <Cross />}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </Section>
     </>
   );
 };

@@ -1,50 +1,41 @@
-import simplifyImg from '../assets/Simplify.png';
+import Section from './motion/Section';
+import CountUp from './motion/CountUp';
 
+/** The one big dark "results" moment on the home page. */
 const Simplify = () => {
   return (
-    <section className="py-24 bg-[#0e0a2b] border-t border-white/5 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
-          
-          {/* Text Content */}
-          <div className="w-full md:w-1/2">
-            <h2 className="text-4xl md:text-[44px] font-bold text-white mb-6 leading-[1.2]">
-              Simplify Workforce<br />Management with<br />Raksham
-            </h2>
-            <p className="text-gray-300 text-[17px] leading-relaxed mb-14 max-w-lg font-light">
-              Raksham simplifies workforce management with powerful tools for tracking attendance, managing payroll, and maintaining employee records, all while ensuring compliance and efficiency, so you can focus on growing your business effortlessly.
-            </p>
-            
-            <div className="flex items-center gap-16">
-              <div>
-                <div className="text-[56px] font-bold text-[#8b5cf6] mb-1 tracking-tighter leading-none">89%</div>
-                <div className="text-white font-medium text-lg">Error Reduction</div>
-              </div>
-              <div>
-                <div className="text-[56px] font-bold text-[#22d3ee] mb-1 tracking-tighter leading-none">96%</div>
-                <div className="text-white font-medium text-lg">Efficiency Boost</div>
-              </div>
-            </div>
-          </div>
+    <Section className="relative overflow-hidden bg-navy py-28 md:py-40">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(50% 55% at 50% 100%, rgba(99,102,241,0.22), transparent 70%)' }}
+      />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight leading-[1.08]">
+          Fewer errors.
+          <br />
+          More done.
+        </h2>
+        <p className="mt-5 mx-auto max-w-[44ch] text-lg md:text-xl text-white/70 leading-snug">
+          Attendance, payroll and employee records in one place, kept compliant, so you can focus on growing the business.
+        </p>
 
-          {/* Illustration Area */}
-          <div className="w-full md:w-1/2 relative flex justify-center items-center">
-            {/* Glow behind card */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[340px] h-[340px] bg-[#6366f1]/20 rounded-full blur-[90px]"></div>
-            </div>
-            <div className="relative z-10 w-full max-w-[480px] bg-white/8 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-              <img
-                src={simplifyImg}
-                alt="Simplify Workforce Management"
-                className="w-full h-auto object-contain block"
-              />
-            </div>
+        <dl className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-6">
+          {/* flex-col-reverse: <dt> comes first in the markup but shows under the number */}
+          <div className="flex flex-col-reverse">
+            <dt className="mt-3 text-lg text-indigo-300">Error reduction</dt>
+            <dd className="text-7xl md:text-[120px] font-semibold text-white tracking-[-0.04em] leading-none">
+              <CountUp to={89} suffix="%" />
+            </dd>
           </div>
-          
-        </div>
+          <div className="flex flex-col-reverse">
+            <dt className="mt-3 text-lg text-indigo-300">Efficiency boost</dt>
+            <dd className="text-7xl md:text-[120px] font-semibold text-white tracking-[-0.04em] leading-none">
+              <CountUp to={96} suffix="%" />
+            </dd>
+          </div>
+        </dl>
       </div>
-    </section>
+    </Section>
   );
 };
 

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { CaretDown } from '@phosphor-icons/react';
+import { AnimatePresence, m } from 'motion/react';
+import Section from './motion/Section';
 
 const faqs = [
   {
@@ -32,42 +34,51 @@ const FaqItem = ({ question, answer }: { question: string; answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-light-gray rounded-xl overflow-hidden bg-white mb-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="border-b border-line">
       <button
-        className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+        className="w-full py-6 text-left flex justify-between items-center gap-6 focus-visible:outline-2 focus-visible:outline-primary rounded"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-semibold text-lg text-dark">{question}</span>
-        {isOpen ? <ChevronUp className="text-primary flex-shrink-0 ml-4" /> : <ChevronDown className="text-gray flex-shrink-0 ml-4" />}
+        <span className="font-medium text-lg md:text-xl text-ink tracking-tight">{question}</span>
+        <CaretDown
+          size={22}
+          className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-primary' : 'text-gray-400'}`}
+        />
       </button>
-      <div 
-        className={`px-6 text-gray overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-40 pb-5 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        {answer}
-      </div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <m.div
+            key="answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 pr-10 text-lg text-body leading-relaxed">{answer}</p>
+          </m.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 const Faq = () => {
   return (
-    <section id="faq" className="py-24 bg-white">
+    <Section id="faq" className="py-24 md:py-32 bg-surface">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-gray">
-            Explore common questions about Raksham’s workforce management software.
-          </p>
-        </div>
-        <div className="space-y-2">
-          {faqs.map((faq, idx) => (
-            <FaqItem key={idx} question={faq.question} answer={faq.answer} />
+        <h2 className="text-4xl md:text-5xl font-semibold text-ink tracking-tight mb-4">Questions? Answers.</h2>
+        <p className="text-lg text-body mb-10">
+          Common questions about Raksham’s workforce management software.
+        </p>
+        <div className="border-t border-line">
+          {faqs.map((faq) => (
+            <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
