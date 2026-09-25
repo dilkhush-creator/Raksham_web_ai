@@ -27,7 +27,7 @@ const Hero = () => {
             <span className="text-primary">One command center.</span>
           </h1>
           <p className="mt-6 mx-auto max-w-[40ch] text-lg md:text-2xl text-body leading-snug">
-            Attendance, staff, guards and payroll for every site, in one platform.
+            Manage workforce and track attendance effortlessly with Raksham. Streamline employee visibility and simplify operations using our platform.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             <PillLink to="/contact">Book a demo</PillLink>

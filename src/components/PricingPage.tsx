@@ -111,12 +111,12 @@ const PricingPage = () => {
       </PageHero>
 
       {/* Plans */}
-      <Section className="bg-surface">
+      <Section className="bg-surface pt-2">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {plans.map((plan, i) => (
             <article
               key={plan.name}
-              className={`rounded-3xl p-10 md:p-12 flex flex-col ${i === 1 ? 'bg-tile-accent ring-2 ring-primary' : 'bg-surface-2'}`}
+              className={`rounded-3xl p-10 md:p-12 flex flex-col ${i === 1 ? 'bg-tile-accent border-2 border-primary' : 'bg-surface-2 border-2 border-transparent'}`}
             >
               <div className="flex items-center justify-between">
                 <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight text-ink`}>{plan.name}</h2>
@@ -142,8 +142,8 @@ const PricingPage = () => {
           <h2 className="text-center text-4xl md:text-5xl font-semibold text-ink tracking-tight">Compare plans.</h2>
           <p className="mt-4 text-center text-lg text-muted">Attendance and report features in each plan.</p>
 
-          {/* Sticky header follows the navbar: right under it when shown, at the very top when it hides */}
-          <div className={`${COLS} sticky top-(--nav-offset) z-20 mt-14 bg-surface border-b border-line px-6 md:px-8 py-4 transition-[top] duration-300 ease-in-out`}>
+          {/* Sticky header sits right under the 56px navbar */}
+          <div className={`${COLS} sticky top-14 z-20 mt-14 bg-surface border-b border-line px-6 md:px-8 py-4`}>
             {/* self-start: sits on the same line as the plan names, not centred against the buttons */}
             <span className="self-start text-lg md:text-xl font-semibold text-ink tracking-tight">Features</span>
             {plans.map((plan, i) => (

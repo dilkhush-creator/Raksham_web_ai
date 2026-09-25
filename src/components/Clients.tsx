@@ -80,7 +80,7 @@ const Clients = () => {
             Trusted by 200+ clients
             <br className="hidden sm:block" /> across 21 cities.
           </h2>
-          <p className="mt-4 text-lg md:text-xl text-muted">More than 19,000+ staff and guards managed on Raksham.</p>
+          <p className="mt-4 text-lg md:text-xl text-muted">More than 90,000+ staff and guards managed on Raksham.</p>
         </div>
 
         {/* Auto-scrolling logo marquee */}

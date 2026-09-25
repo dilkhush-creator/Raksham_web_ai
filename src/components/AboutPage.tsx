@@ -10,7 +10,7 @@ import ScrollStatement from './motion/ScrollStatement';
 const stats = [
   { value: 200, suffix: '+', label: 'clients' },
   { value: 21, suffix: '', label: 'cities' },
-  { value: 19000, suffix: '+', label: 'staff and guards' },
+  { value: 90000, suffix: '+', label: 'staff and guards' },
 ];
 
 const values = [

@@ -1,5 +1,5 @@
 import { List, X, CaretDown, ArrowRight } from '@phosphor-icons/react';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import rakshamLogo from '../assets/Raksham_logo.png';
 
@@ -8,30 +8,8 @@ const LOGIN_URL = 'https://app.raksham.in/auth/login';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const [navHidden, setNavHidden] = useState(false);
-  const lastScrollY = useRef(0);
   const location = useLocation();
 
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      // Hide when scrolling down past 80px, show when scrolling up
-      if (y > lastScrollY.current && y > 80) {
-        setNavHidden(true);
-        setIsOpen(false); // close mobile menu on hide
-      } else {
-        setNavHidden(false);
-      }
-      lastScrollY.current = y;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Publish the navbar's visible height so sticky elements (e.g. the pricing table header) can sit right under it
-  useEffect(() => {
-    document.documentElement.style.setProperty('--nav-offset', navHidden ? '0px' : '3.5rem');
-  }, [navHidden]);
   const isHome = location.pathname === '/';
   const isProducts = location.pathname === '/products';
   const isAbout = location.pathname === '/about';
@@ -39,8 +17,9 @@ const Navbar = () => {
   const isBlog = location.pathname === '/blog';
   const isContact = location.pathname === '/contact';
 
+  // Always visible (Apple-style); frosted so content shows softly through it
   return (
-    <nav className={`fixed top-0 w-full bg-surface/80 backdrop-blur-xl backdrop-saturate-150 z-50 border-b border-line/60 transition-transform duration-300 ease-in-out ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}>
+    <nav className="fixed top-0 w-full bg-surface/80 backdrop-blur-xl backdrop-saturate-150 z-50 border-b border-line/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-14 items-center">
           {/* Logo */}
